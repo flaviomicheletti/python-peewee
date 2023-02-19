@@ -1,20 +1,14 @@
 import unittest
 from unittest.mock import patch
+from peewee import SqliteDatabase
 from movies1 import Movies, delete_movie
 
+# Use an in-memory database for testing
+db = SqliteDatabase(':memory:')
+Movies._meta.database = db
+Movies.create_table()
+
 class TestDeleteMovie(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        # Connect to the database and create the Movies table
-        Movies._meta.database.connect()
-        Movies.create_table()
-
-    @classmethod
-    def tearDownClass(cls):
-        # Drop the Movies table and close the database connection
-        Movies.drop_table()
-        Movies._meta.database.close()
-
     def test_delete_existing_movie(self):
         # Create a movie to delete
         movie = Movies.create(title='The Godfather', year=1972, genre='Crime')

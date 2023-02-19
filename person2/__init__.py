@@ -1,7 +1,7 @@
 from peewee import *
 
 # Create a SQLite database
-db = SqliteDatabase("mydatabase.db")
+db = SqliteDatabase("person2.db")
 
 # Define the Person model
 class Person(Model):
