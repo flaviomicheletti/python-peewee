@@ -7,8 +7,8 @@ class TestFoo(TestCase):
     def test_peewee_crud_read(self):
 
         # Patch the `get` method to return a test person
-        with patch.object(Person, "get") as mock_get:
-            mock_get.return_value = Person(name="Alice", age=30)
+        with patch.object(Person, "get") as mock:
+            mock.return_value = Person(name="Alice", age=30)
 
             # Call the `get` method and check the returned value
             person = Person.get(Person.name == "Alice")
