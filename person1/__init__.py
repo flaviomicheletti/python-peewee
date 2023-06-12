@@ -1,4 +1,4 @@
-from peewee import SqliteDatabase, Model, CharField, IntegerField
+from peewee import Model, CharField, IntegerField
 
 
 class Person(Model):

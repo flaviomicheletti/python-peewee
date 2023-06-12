@@ -1,14 +1,23 @@
 import unittest
 from unittest.mock import patch
-from peewee import SqliteDatabase
 from movies1 import Movies, delete_movie
+from peewee import SqliteDatabase
 
-# Use an in-memory database for testing
-db = SqliteDatabase(':memory:')
-Movies._meta.database = db
-Movies.create_table()
 
 class TestDeleteMovie(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Use an in-memory database for testing
+        db = SqliteDatabase(':memory:')
+        Movies._meta.database = db
+        Movies.create_table()
+
+    @classmethod
+    def tearDownClass(cls):
+        # Drop the Movies table and close the database connection
+        Movies.drop_table()
+        Movies._meta.database.close()
+
     def test_delete_existing_movie(self):
         # Create a movie to delete
         movie = Movies.create(title='The Godfather', year=1972, genre='Crime')
@@ -20,7 +29,8 @@ class TestDeleteMovie(unittest.TestCase):
 
         # Check that the movie was deleted and the function returned True
         self.assertTrue(result)
-        self.assertFalse(Movies.select().where(Movies.title == 'The Godfather').exists())
+        self.assertFalse(Movies.select().where(
+            Movies.title == 'The Godfather').exists())
 
     def test_delete_nonexistent_movie(self):
         # Call delete_movie with a title that doesn't exist
@@ -30,4 +40,5 @@ class TestDeleteMovie(unittest.TestCase):
 
         # Check that no movie was deleted and the function returned False
         self.assertFalse(result)
-        self.assertFalse(Movies.select().where(Movies.title == 'Nonexistent Movie').exists())
+        self.assertFalse(Movies.select().where(
+            Movies.title == 'Nonexistent Movie').exists())

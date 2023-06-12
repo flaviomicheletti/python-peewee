@@ -2,10 +2,13 @@ import unittest
 from unittest.mock import patch
 from movies1 import Movies, delete_movie
 
+
+
 class TestDeleteMovie(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # Connect to the database and create the Movies table
+        
         Movies._meta.database.connect()
         Movies.create_table()
 
@@ -26,7 +29,8 @@ class TestDeleteMovie(unittest.TestCase):
 
         # Check that the movie was deleted and the function returned True
         self.assertTrue(result)
-        self.assertFalse(Movies.select().where(Movies.title == 'The Godfather').exists())
+        self.assertFalse(Movies.select().where(
+            Movies.title == 'The Godfather').exists())
 
     def test_delete_nonexistent_movie(self):
         # Call delete_movie with a title that doesn't exist
@@ -36,4 +40,5 @@ class TestDeleteMovie(unittest.TestCase):
 
         # Check that no movie was deleted and the function returned False
         self.assertFalse(result)
-        self.assertFalse(Movies.select().where(Movies.title == 'Nonexistent Movie').exists())
+        self.assertFalse(Movies.select().where(
+            Movies.title == 'Nonexistent Movie').exists())

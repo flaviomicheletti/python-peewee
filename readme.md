@@ -1,45 +1,24 @@
+# Peewee
 
-
-# Instalation
+- https://docs.peewee-orm.com/en/latest/
+- https://pypi.org/project/peewee/
+- https://github.com/coleifer/peewee
 
 __venv:__
 
     python3 -m venv .venv && . .venv/bin/activate
 
-## Install
-
-In both environments you will need to install it only once.
-
-    // in the first time
-    pip install -U pytest
-    pip install pytest-mock
-    pip install pytest-cov
-    pip install coverage
-    pip install requests
-    pip install SQLAlchemy
-    pip install psycopg2
-
-## Running
-
-    pytest
-
-
-## Coverage
-
-    coverage run -m pytest
-    coverage html
-
-    pytest --cov . --cov-report html
-
-
-## Running
+__Running:__
 
     python -m unittest discover -v
     python -m unittest discover -p 'test_*.py'
 
-
-## Coverage
+__Coverage:__
 
     coverage run -m unittest discover
+
     coverage report -m
     coverage html
+
+    coverage run -m unittest discover &&  coverage html
+

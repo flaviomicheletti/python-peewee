@@ -3,6 +3,7 @@ from unittest.mock import patch
 from peewee import DoesNotExist
 from person2 import get_person_by_id, Person
 
+
 class TestPerson2(unittest.TestCase):
     def test_existing_person(self):
         # Create a mock person with ID 1

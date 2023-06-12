@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from peewee import SqliteDatabase, Model, CharField, IntegerField
+from peewee import Model, CharField, IntegerField
 
 
 class TestPerson1(TestCase):
