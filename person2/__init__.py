@@ -1,18 +1,17 @@
+# from peewee import DoesNotExist
 from peewee import *
 
 # Create a SQLite database
 db = SqliteDatabase("person2.db")
 
-# Define the Person model
+
 class Person(Model):
+    # Define the Person model
     name = CharField()
     age = IntegerField()
 
     class Meta:
         database = db
-
-
-from peewee import DoesNotExist
 
 
 def get_person_by_id(person_id: int) -> dict:
