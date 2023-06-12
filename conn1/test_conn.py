@@ -2,7 +2,7 @@
 import unittest
 from unittest.mock import patch
 from peewee import Model, CharField
-from conn import db
+from conn1 import db
 
 
 # Mock model
@@ -14,7 +14,7 @@ class MockModel(Model):
 
 class TestMyDatabase(unittest.TestCase):
 
-    @patch('conn.SqliteDatabase')
+    @patch('conn1.SqliteDatabase')
     def test_database_creation(self, mock_sqlite_db):
         # Set up the mock
         mock_instance = mock_sqlite_db.return_value
