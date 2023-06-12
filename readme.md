@@ -1,4 +1,7 @@
-# Peewee
+![image](https://github.com/flaviomicheletti/python-peewee/assets/1257048/dcadd9a8-0443-41fb-9274-326f301cd0db)
+
+Peewee is a simple and small ORM. It has few (but expressive) concepts,
+making it easy to learn and intuitive to use.
 
 - https://docs.peewee-orm.com/en/latest/
 - https://pypi.org/project/peewee/
