@@ -1,10 +1,15 @@
 from unittest import TestCase
 from unittest.mock import patch
-from person1 import Person
+from peewee import Model, CharField, IntegerField
 
 
-class TestPerson1b(TestCase):
+class TestPerson1(TestCase):
     def test_peewee_crud_read(self):
+
+        # Define a model for testing purposes
+        class Person(Model):
+            name = CharField()
+            age = IntegerField()
 
         # Patch the `get` method to return a test person
         with patch.object(Person, "get") as mock:
